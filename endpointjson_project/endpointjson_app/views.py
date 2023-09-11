@@ -2,7 +2,6 @@ from django.views.decorators.http import require_GET
 from django.http import JsonResponse
 from datetime import datetime
 
-
 # Create your views here.
 @require_GET
 def Get_info(request):
@@ -10,18 +9,18 @@ def Get_info(request):
     slack_name = request.GET.get('slack_name', 'Raine')
     track = request.GET.get('track', 'backend')
 
-    # Current day of the week and UTC time
+    # Get the current day of the week and UTC time
     current_day = datetime.utcnow().strftime('%A')
     current_utc_time = datetime.utcnow().isoformat(timespec='seconds')+ 'Z'
 
 
-    # GitHub URL of the file being run
+    # Get the GitHub URL of the file being run
     github_repo_url = 'https://github.com/Rainemi/hng'
 
-    # GitHub URL of the full source code (replace with your repository URL)
+    # Get the GitHub URL of the full source code (replace with your repository URL)
     github_file_url = 'https://github.com/Rainemi/hng/blob/main/endpointjson_project/endpointjson_app/views.py'
 
-    # Dictionary to hold the response data
+    # Create a dictionary to hold the response data
     response_data = {
         'slack_name': slack_name,
         'current_day': current_day,
@@ -33,4 +32,6 @@ def Get_info(request):
     }
 
     return JsonResponse(response_data)
+
+
 
